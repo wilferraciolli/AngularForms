@@ -25,30 +25,35 @@
       </label>
     </div>
 
-    <!--    <label>Payment type</label>-->
-    <!--    &lt;!&ndash; Adding radio buttons to forms, use div/label/input &ndash;&gt;-->
-    <!--    <div class="radio">-->
-    <!--      <label>-->
-    <!--        <input type="radio" name="pay-type" value="w2" checked>-->
-    <!--        W2-->
-    <!--      </label>-->
-    <!--    </div>-->
-    <!--    <div class="radio">-->
-    <!--      <label>-->
-    <!--        <input type="radio" name="pay-type" value="1099">-->
-    <!--        1099-->
-    <!--      </label>-->
-    <!--    </div>-->
+    <label>Payment type</label>
+    <!-- Adding radio buttons to forms, use div/label/input
+    Note that for radio buttons, they all must have the same name attribute -->
+    <div class="radio">
+      <label>
+        <input type="radio" name="paymentType" value="w2" checked
+               [(ngModel)]="model.paymentType">
+        W2
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="paymentType" value="1099"
+               [(ngModel)]="model.paymentType">
+        1099
+      </label>
+    </div>
 
-    <!--    &lt;!&ndash; creating selects &ndash;&gt;-->
-    <!--    <div class="form-group">-->
-    <!--      <label>Primary language</label>-->
-    <!--      <select class="form-control">-->
-    <!--        <option *ngFor="let lang of languages">-->
-    <!--          {{lang}}-->
-    <!--        </option>-->
-    <!--      </select>-->
-    <!--    </div>-->
+    <!-- creating selects -->
+    <div class="form-group">
+      <label>Primary language</label>
+      <select class="form-control"
+      name="primaryLanguage"
+      [(ngModel)]="model.primaryLanguage">
+        <option *ngFor="let lang of languages">
+          {{lang}}
+        </option>
+      </select>
+    </div>
 
     <!--    &lt;!&ndash; Date &ndash;&gt;-->
     <!--    <div class="form-group">-->

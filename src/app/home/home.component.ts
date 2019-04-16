@@ -9,7 +9,7 @@ import {Employee} from "../models/employee.model";
 export class HomeComponent {
 
   languages = ['English', 'Greek', 'Other'];
-  model = new Employee('Wiliam', 'Ferraciolli', true)
+  model = new Employee('Wiliam', 'Ferraciolli', true, 'w2', 'English')
 
   firstNameToUpperCase(value: string){
     if (value.length > 0){

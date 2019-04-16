@@ -11,17 +11,19 @@
              [ngModel]="model.firstName"
              (ngModelChange)="firstNameToUpperCase($event)">
     </div>
-    <!--    <div class="form-group">-->
-    <!--      <label for="lastNameId">Last Name</label>-->
-    <!--      <input id="lastNameId" type="text" class="form-control" required name="lastName" ngModel>-->
-    <!--    </div>-->
+    <div class="form-group">
+      <label for="lastNameId">Last Name</label>
+      <input id="lastNameId" type="text" class="form-control" required name="lastName"
+             [(ngModel)]="model.lastName">
+    </div>
 
-    <!--    &lt;!&ndash; Easier way to add a check box, div/label/input&ndash;&gt;-->
-    <!--    <div class="checkbox">-->
-    <!--      <label>-->
-    <!--        <input type="checkbox" name="is-full-time" ngModel> Full time employee-->
-    <!--      </label>-->
-    <!--    </div>-->
+    <!-- Easier way to add a check box, div/label/input-->
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="is-full-time"
+               [(ngModel)]="model.isFullTime"> Full time employee
+      </label>
+    </div>
 
     <!--    <label>Payment type</label>-->
     <!--    &lt;!&ndash; Adding radio buttons to forms, use div/label/input &ndash;&gt;-->

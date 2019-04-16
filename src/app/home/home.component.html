@@ -1,0 +1,58 @@
+<div class="container">
+  <h3>Employee Form</h3>
+
+  <!-- forms in angular are directives which can be used somewhere else
+  Therefore we can give the form a name #form="ngForm" and reuse-->
+  <form #form="ngForm" novalidate>
+    <div class="form-group">
+      <label for="firstNameId">First Name</label>
+      <input id="firstNameId" type="text" class="form-control" required name="firstName" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="lastNameId">Last Name</label>
+      <input id="lastNameId" type="text" class="form-control" required name="lastName" ngModel>
+    </div>
+
+    <!-- Easier way to add a check box, div/label/input-->
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="is-full-time" ngModel> Full time employee
+      </label>
+    </div>
+
+    <label>Payment type</label>
+    <!-- Adding radio buttons to forms, use div/label/input -->
+    <div class="radio">
+      <label>
+        <input type="radio" name="pay-type" value="w2" checked>
+        W2
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="pay-type" value="1099">
+        1099
+      </label>
+    </div>
+
+    <!-- creating selects -->
+    <div class="form-group">
+      <label>Primary language</label>
+      <select class="form-control">
+        <option *ngFor="let lang of languages">
+          {{lang}}
+        </option>
+      </select>
+    </div>
+
+    <!-- Date -->
+    <div class="form-group">
+      <label>Date Hired</label>
+      <input type="date" class="form-control">
+    </div>
+
+    <!-- Save button when form is completed -->
+    <button class="btn btn-primary" type="submit">OK</button>
+  </form>
+
+</div>

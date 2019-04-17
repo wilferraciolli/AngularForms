@@ -6,54 +6,60 @@
   <form #form="ngForm" novalidate>
     <div class="form-group">
       <label for="firstNameId">First Name</label>
-      <!-- Two way data bind example calling a function -->
-      <input id="firstNameId" type="text" class="form-control" required name="firstName"
+      <!-- Two way data bind example calling a function and assigning a template for the input which them allows to control each field on the form -->
+      <input #firstName="ngModel" required id="firstNameId" type="text" class="form-control" name="firstName"
              [ngModel]="model.firstName"
              (ngModelChange)="firstNameToUpperCase($event)">
-    </div>
-    <div class="form-group">
-      <label for="lastNameId">Last Name</label>
-      <input id="lastNameId" type="text" class="form-control" required name="lastName"
-             [(ngModel)]="model.lastName">
+  
     </div>
 
-    <!-- Easier way to add a check box, div/label/input-->
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="is-full-time"
-               [(ngModel)]="model.isFullTime"> Full time employee
-      </label>
-    </div>
+    <h3>Classes</h3>
+    <!-- Print classes associated with a property -->
+    <h4>{{firstName.invalid}}</h4>
 
-    <label>Payment type</label>
-    <!-- Adding radio buttons to forms, use div/label/input
-    Note that for radio buttons, they all must have the same name attribute -->
-    <div class="radio">
-      <label>
-        <input type="radio" name="paymentType" value="w2" checked
-               [(ngModel)]="model.paymentType">
-        W2
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="paymentType" value="1099"
-               [(ngModel)]="model.paymentType">
-        1099
-      </label>
-    </div>
+    <!--    <div class="form-group">-->
+    <!--      <label for="lastNameId">Last Name</label>-->
+    <!--      <input id="lastNameId" type="text" class="form-control" required name="lastName"-->
+    <!--             [(ngModel)]="model.lastName">-->
+    <!--    </div>-->
+
+    <!--    &lt;!&ndash; Easier way to add a check box, div/label/input&ndash;&gt;-->
+    <!--    <div class="checkbox">-->
+    <!--      <label>-->
+    <!--        <input type="checkbox" name="is-full-time"-->
+    <!--               [(ngModel)]="model.isFullTime"> Full time employee-->
+    <!--      </label>-->
+    <!--    </div>-->
+
+    <!--    <label>Payment type</label>-->
+    <!--    &lt;!&ndash; Adding radio buttons to forms, use div/label/input-->
+    <!--    Note that for radio buttons, they all must have the same name attribute &ndash;&gt;-->
+    <!--    <div class="radio">-->
+    <!--      <label>-->
+    <!--        <input type="radio" name="paymentType" value="w2" checked-->
+    <!--               [(ngModel)]="model.paymentType">-->
+    <!--        W2-->
+    <!--      </label>-->
+    <!--    </div>-->
+    <!--    <div class="radio">-->
+    <!--      <label>-->
+    <!--        <input type="radio" name="paymentType" value="1099"-->
+    <!--               [(ngModel)]="model.paymentType">-->
+    <!--        1099-->
+    <!--      </label>-->
+    <!--    </div>-->
 
     <!-- creating selects -->
-    <div class="form-group">
-      <label>Primary language</label>
-      <select class="form-control"
-      name="primaryLanguage"
-      [(ngModel)]="model.primaryLanguage">
-        <option *ngFor="let lang of languages">
-          {{lang}}
-        </option>
-      </select>
-    </div>
+    <!--    <div class="form-group">-->
+    <!--      <label>Primary language</label>-->
+    <!--      <select class="form-control"-->
+    <!--      name="primaryLanguage"-->
+    <!--      [(ngModel)]="model.primaryLanguage">-->
+    <!--        <option *ngFor="let lang of languages">-->
+    <!--          {{lang}}-->
+    <!--        </option>-->
+    <!--      </select>-->
+    <!--    </div>-->
 
     <!--    &lt;!&ndash; Date &ndash;&gt;-->
     <!--    <div class="form-group">-->
@@ -65,8 +71,10 @@
     <button class="btn btn-primary" type="submit">OK</button>
   </form>
 
-  Model: {{model |json}}
+  <!-- Prints attributes values iin json format -->
+  <!--  Model: {{model |json}}-->
   <br>
-  Angular: {{form.value | json}}
+  <!-- Prints form value in json format -->
+  <!--  Angular: {{form.value | json}}-->
 
 </div>

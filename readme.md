@@ -1,14 +1,33 @@
-## angular2-seed
+## Angular forms
 
-A simple starter project demonstrating the basic concepts of Angular 2.
-
+A simnple program showing how to use forms within angular
 
 ### Usage
-- Clone or fork this repository
-- Make sure you have [node.js](https://nodejs.org/) installed version 5+
-- Make sure you have NPM installed version 3+
-- `WINDOWS ONLY` run `npm install -g webpack webpack-dev-server typescript` to install global dependencies
-- run `npm install` to install dependencies
-- run `npm start` to fire up dev server
-- open browser to [`http://localhost:3000`](http://localhost:3000)
-- if you want to use other port, open `package.json` file, then change port in `--port 3000` script
+This project was created using npm, therefore angular CLI wont work with it
+This project has a node server created under the folder node_server to run APIs
+
+Toi create the node server 
+  Create the node_server folder
+  Navigate onto it 
+  Type in npm init
+  choose all the default values
+  then run npm install --save formidable
+  
+ ##As the server node is created, you should see the following putput
+ About to write to C:\DEV\GIT\AngularForms\node_server\package.json:
+ 
+ {
+   "name": "node_server",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+     "test": "echo \"Error: no test specified\" && exit 1"
+   },
+   "author": "",
+   "license": "ISC"
+ }
+
+##To run the node server
+Navigate to node_server folder
+type in node server.js

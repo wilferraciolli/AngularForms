@@ -1,7 +1,7 @@
 {
   "name": "angular2-seed",
   "version": "1.0.0",
-  "description": "A simple starter Angular2 project",
+  "description": "A simple starter Angular project",
   "scripts": {
     "build": "rimraf dist && webpack --progress",
     "watch": "npm run build -- --watch",

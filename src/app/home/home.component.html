@@ -82,7 +82,8 @@
     <!--    </div>-->
 
     <!-- Save button when form is completed -->
-    <button class="btn btn-primary" type="submit">OK</button>
+    <button class="btn btn-primary" type="submit"
+    [disabled]="form.invalid">OK</button>
   </form>
 
   <!-- Prints attributes values iin json format -->
@@ -93,7 +94,7 @@
 
   <!-- Form flags to check if the form integrity -->
   <h3>{{form.valid}}</h3>
-  <h3>{{form.pristine}}</h3>
-  <h3>{{form.dirty}}</h3>
-  <h3>{{form.touched}}</h3>
+<!--  <h3>{{form.pristine}}</h3>-->
+<!--  <h3>{{form.dirty}}</h3>-->
+<!--  <h3>{{form.touched}}</h3>-->
 </div>

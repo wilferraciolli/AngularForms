@@ -17,15 +17,19 @@ export class HomeComponent {
    * This is to validate the select model
    * @param event
    */
-  validatePrimaryLanguage(event) {
+  validatePrimaryLanguage(value) {
     console.log('lang ' + this.model.primaryLanguage);
-    if (this.model.primaryLanguage == 'default') {
+    if (value == 'default') {
       this.hasPrimaryLanguageError = true;
     } else {
       this.hasPrimaryLanguageError = false;
     }
   }
 
+  /**
+   * Function to replace  the first character to always be capital.
+   * @param value
+   */
   firstNameToUpperCase(value: string) {
     if (value.length > 0) {
       //make the first letter capital

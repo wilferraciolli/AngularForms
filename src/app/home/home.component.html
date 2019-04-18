@@ -59,11 +59,14 @@
     <!-- creating selects -->
     <div class="form-group" [class.has-error]="hasPrimaryLanguageError">
       <label class="control-label">Primary language</label>
-      <!-- Bind this selector to the blur web browser event to chek whether is valid or not -->
+      <!-- Bind this selector to the blur web browser event to check whether is valid or not
+      Added change web browser event to pass the value selected every time a change was made. This is used to instantly allow the field to set back to valid once changed without the need to click somewhere else-->
       <select class="form-control"
+              #primaryLanguage
               name="primaryLanguage"
               [(ngModel)]="model.primaryLanguage"
-              (blur)="validatePrimaryLanguage($event)">
+              (blur)="validatePrimaryLanguage(primaryLanguage.value)"
+              (change)="validatePrimaryLanguage(primaryLanguage.value)">
         <!-- Set the default value to pre populate with the default value specified on the ts class-->
         <option value="default">Select a language...</option>
         <option *ngFor="let lang of languages">

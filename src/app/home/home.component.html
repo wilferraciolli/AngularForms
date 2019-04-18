@@ -4,18 +4,25 @@
   <!-- forms in angular are directives which can be used somewhere else
   Therefore we can give the form a name #form="ngForm" and reuse-->
   <form #form="ngForm" novalidate>
-    <div class="form-group">
-      <label for="firstNameId">First Name</label>
-      <!-- Two way data bind example calling a function and assigning a template for the input which them allows to control each field on the form -->
-      <input #firstName="ngModel" required id="firstNameId" type="text" class="form-control" name="firstName"
+    <!-- Adding a class tot he div conditionally -->
+    <div class="form-group" [class.has-error]="firstName.invalid && firstName.touched">
+      <label class="control-label" for="firstNameId">First Name</label>
+      <!-- Two way data bind example calling a function
+      and assigning a template for the input which them allows to control each field on the form -->
+      <input #firstName="ngModel" required maxlength="8" pattern="...+"
+             id="firstNameId" type="text" class="form-control" name="firstName"
              [ngModel]="model.firstName"
              (ngModelChange)="firstNameToUpperCase($event)">
-  
+
+      <!-- Conditionally adding error message poping up for validation -->
+      <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger">
+        First Name is required and must be more than 3 characters
+      </div>
     </div>
 
-    <h3>Classes</h3>
     <!-- Print classes associated with a property -->
-    <h4>{{firstName.invalid}}</h4>
+    <!--    <h3>Classes</h3>-->
+    <!--    <h4>{{firstName.invalid}}</h4>-->
 
     <!--    <div class="form-group">-->
     <!--      <label for="lastNameId">Last Name</label>-->
@@ -50,16 +57,20 @@
     <!--    </div>-->
 
     <!-- creating selects -->
-    <!--    <div class="form-group">-->
-    <!--      <label>Primary language</label>-->
-    <!--      <select class="form-control"-->
-    <!--      name="primaryLanguage"-->
-    <!--      [(ngModel)]="model.primaryLanguage">-->
-    <!--        <option *ngFor="let lang of languages">-->
-    <!--          {{lang}}-->
-    <!--        </option>-->
-    <!--      </select>-->
-    <!--    </div>-->
+    <div class="form-group" [class.has-error]="hasPrimaryLanguageError">
+      <label class="control-label">Primary language</label>
+      <!-- Bind this selector to the blur web browser event to chek whether is valid or not -->
+      <select class="form-control"
+              name="primaryLanguage"
+              [(ngModel)]="model.primaryLanguage"
+              (blur)="validatePrimaryLanguage($event)">
+        <!-- Set the default value to pre populate with the default value specified on the ts class-->
+        <option value="default">Select a language...</option>
+        <option *ngFor="let lang of languages">
+          {{lang}}
+        </option>
+      </select>
+    </div>
 
     <!--    &lt;!&ndash; Date &ndash;&gt;-->
     <!--    <div class="form-group">-->

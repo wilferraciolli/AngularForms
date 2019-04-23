@@ -30,4 +30,4 @@ Toi create the node server
 
 ##To run the node server
 Navigate to node_server folder
-type in node server.js
+type in `node server.js` to start up the server

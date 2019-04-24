@@ -8,7 +8,7 @@ var server = http.createServer(function (req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
 
-  if (req.method.toLowerCase() == post){
+  if (req.method.toLowerCase() == 'post'){
     processForm(req, res);
     return;
   }
@@ -25,12 +25,16 @@ function processForm(req, res){
       'content-type' : 'text/plain'
     });
 
-    res.end(util.inspect({
+    var data = JSON.stringify({
       fields: fields
-    }));
+    });
+
+    res.end(data);
 
     console.log('posted fields :\n');
-    console.log(util.inspect({
+
+    console.log('The data as string ', data);
+    console.log('The data as Json ', util.inspect({
       fields: fields
     }));
   });

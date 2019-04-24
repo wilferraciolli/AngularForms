@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {Employee} from "../models/employee.model";
+import {FormPoster} from "../services/form-poster-service";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'home',
@@ -11,6 +13,10 @@ export class HomeComponent {
   languages = ['English', 'Greek', 'Other'];
   model = new Employee('', '', true, '', 'default')
   hasPrimaryLanguageError = false;
+
+  constructor(private formPoster: FormPoster) {
+
+  }
 
   /**
    * Function to check whether a value other than the default was chosen.
@@ -38,5 +44,29 @@ export class HomeComponent {
       this.model.firstName = value;
     }
 
+  }
+
+  /**
+   * Function to handle when the form gets submitted.
+   * @param form data passed from angular form.
+   */
+  submitForm(form: NgForm) {
+
+    //validate
+    this.validatePrimaryLanguage(this.model.primaryLanguage);
+    if (this.hasPrimaryLanguageError){
+      //returnb out of the method if validation failed
+      return;
+    }
+
+    // console.log(this.model); //show the value for the model entity
+    // console.log(form.value); //show the value for the form data
+
+    //create an Observable to create data on the api. this willr eturn the data or the error
+    this.formPoster.postEmployeeForm(this.model)
+      .subscribe(
+        data => console.log('success: ', data),
+        error => console.log('error: ', error)
+      )
   }
 }

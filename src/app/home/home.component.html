@@ -3,7 +3,7 @@
 
   <!-- forms in angular are directives which can be used somewhere else
   Therefore we can give the form a name #form="ngForm" and reuse-->
-  <form #form="ngForm" novalidate>
+  <form #form="ngForm" (submit)="submitForm(form)" novalidate>
     <!-- Adding a class tot he div conditionally -->
     <div class="form-group" [class.has-error]="firstName.invalid && firstName.touched">
       <label class="control-label" for="firstNameId">First Name</label>
@@ -13,48 +13,49 @@
              id="firstNameId" type="text" class="form-control" name="firstName"
              [ngModel]="model.firstName"
              (ngModelChange)="firstNameToUpperCase($event)">
-
       <!-- Conditionally adding error message poping up for validation -->
       <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger">
         First Name is required and must be more than 3 characters
       </div>
     </div>
-
     <!-- Print classes associated with a property -->
-    <!--    <h3>Classes</h3>-->
-    <!--    <h4>{{firstName.invalid}}</h4>-->
+    <!-- <h3>Classes</h3> -->
+    <!-- <h4>{{firstName.invalid}}</h4> -->
 
-    <!--    <div class="form-group">-->
-    <!--      <label for="lastNameId">Last Name</label>-->
-    <!--      <input id="lastNameId" type="text" class="form-control" required name="lastName"-->
-    <!--             [(ngModel)]="model.lastName">-->
-    <!--    </div>-->
+    <div class="form-group">
+      <label for="lastNameId">Last Name</label>
+      <input #lastName="ngModel" id="lastNameId" type="text" class="form-control" required name="lastName"
+             [(ngModel)]="model.lastName">
+      <div *ngIf="lastName.invalid && lastName.touched" class="alert alert-danger">
+        Last Name is required and must be more than 3 characters
+      </div>
+    </div>
 
-    <!--    &lt;!&ndash; Easier way to add a check box, div/label/input&ndash;&gt;-->
-    <!--    <div class="checkbox">-->
-    <!--      <label>-->
-    <!--        <input type="checkbox" name="is-full-time"-->
-    <!--               [(ngModel)]="model.isFullTime"> Full time employee-->
-    <!--      </label>-->
-    <!--    </div>-->
+    <!-- Easier way to add a check box, div/label/input-->
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="is-full-time"
+               [(ngModel)]="model.isFullTime"> Full time employee
+      </label>
+    </div>
 
-    <!--    <label>Payment type</label>-->
-    <!--    &lt;!&ndash; Adding radio buttons to forms, use div/label/input-->
-    <!--    Note that for radio buttons, they all must have the same name attribute &ndash;&gt;-->
-    <!--    <div class="radio">-->
-    <!--      <label>-->
-    <!--        <input type="radio" name="paymentType" value="w2" checked-->
-    <!--               [(ngModel)]="model.paymentType">-->
-    <!--        W2-->
-    <!--      </label>-->
-    <!--    </div>-->
-    <!--    <div class="radio">-->
-    <!--      <label>-->
-    <!--        <input type="radio" name="paymentType" value="1099"-->
-    <!--               [(ngModel)]="model.paymentType">-->
-    <!--        1099-->
-    <!--      </label>-->
-    <!--    </div>-->
+    <label>Payment type</label>
+    <!-- Adding radio buttons to forms, use div/label/input
+    Note that for radio buttons, they all must have the same name attribute -->
+    <div class="radio">
+      <label>
+        <input type="radio" name="paymentType" value="w2" checked
+               [(ngModel)]="model.paymentType">
+        W2
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="paymentType" value="1099"
+               [(ngModel)]="model.paymentType">
+        1099
+      </label>
+    </div>
 
     <!-- creating selects -->
     <div class="form-group" [class.has-error]="hasPrimaryLanguageError">
@@ -83,18 +84,19 @@
 
     <!-- Save button when form is completed -->
     <button class="btn btn-primary" type="submit"
-    [disabled]="form.invalid">OK</button>
+            [disabled]="form.invalid">OK
+    </button>
   </form>
 
   <!-- Prints attributes values iin json format -->
   <!--  Model: {{model |json}}-->
-  <br>
+  <!--  <br>-->
   <!-- Prints form value in json format -->
   <!--  Angular: {{form.value | json}}-->
 
   <!-- Form flags to check if the form integrity -->
-  <h3>{{form.valid}}</h3>
-<!--  <h3>{{form.pristine}}</h3>-->
-<!--  <h3>{{form.dirty}}</h3>-->
-<!--  <h3>{{form.touched}}</h3>-->
+  <!--  <h3>{{form.valid}}</h3>-->
+  <!--  <h3>{{form.pristine}}</h3>-->
+  <!--  <h3>{{form.dirty}}</h3>-->
+  <!--  <h3>{{form.touched}}</h3>-->
 </div>

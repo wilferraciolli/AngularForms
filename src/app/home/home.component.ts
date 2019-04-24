@@ -55,7 +55,7 @@ export class HomeComponent {
     //validate
     this.validatePrimaryLanguage(this.model.primaryLanguage);
     if (this.hasPrimaryLanguageError){
-      //returnb out of the method if validation failed
+      //return out of the method if validation failed
       return;
     }
 

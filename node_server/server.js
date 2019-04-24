@@ -21,7 +21,7 @@ function processForm(req, res){
 
   //parse form
   form.parse(req, function (err, fields){
-    res.writeHead(200, {
+    res.writeHead(400, {
       'content-type' : 'text/plain'
     });
 

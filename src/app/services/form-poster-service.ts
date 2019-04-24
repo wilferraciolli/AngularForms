@@ -37,6 +37,6 @@ export class FormPoster {
 
   private handleError(error: any){
     console.error('post error: ', error);
-    return Observable.throw(error.statusText);
+    return Observable.throw(error.status +' ' + error.statusText);
   }
 }

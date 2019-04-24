@@ -10,12 +10,16 @@ import {NgForm} from "@angular/forms";
 })
 export class HomeComponent {
 
-  languages = ['English', 'Greek', 'Other'];
+  languages: Array<string>;
   model = new Employee('', '', true, '', 'default')
   hasPrimaryLanguageError = false;
 
   constructor(private formPoster: FormPoster) {
-
+    this.formPoster.getLanguages()
+      .subscribe(
+        data => this.languages = data.languages,
+        error => console.log('GET error: ', error)
+      );
   }
 
   /**
@@ -54,7 +58,7 @@ export class HomeComponent {
 
     //validate
     this.validatePrimaryLanguage(this.model.primaryLanguage);
-    if (this.hasPrimaryLanguageError){
+    if (this.hasPrimaryLanguageError) {
       //return out of the method if validation failed
       return;
     }
@@ -62,11 +66,11 @@ export class HomeComponent {
     // console.log(this.model); //show the value for the model entity
     // console.log(form.value); //show the value for the form data
 
-    //create an Observable to create data on the api. this willr eturn the data or the error
+    //create an Observable to create data on the api. this will return the data or the error
     this.formPoster.postEmployeeForm(this.model)
       .subscribe(
         data => console.log('success: ', data),
         error => console.log('error: ', error)
-      )
+      );
   }
 }

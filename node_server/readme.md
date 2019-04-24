@@ -8,4 +8,8 @@ The server has an extra dependency of formidable to handle forms
 
 To run this application simply runt he following command
   `node server.js`
- If successfull, it will print a message saying `server listening on port 4100`
+ If successful, it will print a message saying `server listening on port 4100`
+ 
+ This is a very basic server and only handle a few methods
+ POST - will always return wherever was sent with an added id
+ GET - Will always return an array of languages
